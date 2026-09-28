@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111826">
+  <title>Cube Shift — a 3D rotation game</title>
+  <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Cube Shift home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>CUBE<span>SHIFT</span><small>THE ROTATION GAME</small></span></a>
+      <div class="header-tag"><span class="live-dot"></span> INTERACTIVE 3D PUZZLE <span class="header-tag__number">/ 01</span></div>
+    </header>
+    <main class="layout">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="eyebrow"><span class="eyebrow-line"></span> THINK IN THREE DIMENSIONS</div>
+        <h1 id="page-title">Give it<br>a <em>spin.</em></h1>
+        <p>Rotate the cube on all three axes. Match the reference orientation before the clock runs out.</p>
+        <div class="intro-rule"></div>
+        <div class="how-to"><span class="how-to__number">01 / THE OBJECTIVE</span><p>Turn the large cube until every face lines up with the small target cube.</p></div>
+        <div class="how-to"><span class="how-to__number">02 / THE CONTROLS</span><p>Use the arrow keys for X and Y. Use <kbd>Q</kbd> and <kbd>E</kbd> to rotate around Z.</p></div>
+        <div class="key-legend"><span>← ↑ ↓ → <small>ROTATE</small></span><span>Q / E <small>ROLL</small></span><span>SPACE <small>PAUSE</small></span></div>
+      </section>
+      <section class="game" aria-label="Cube Shift game">
+        <div class="game-topline"><span><span class="game-topline__asterisk">✳</span> ORIENTATION LAB</span><span>NO. <span data-round>01</span> <span class="game-topline__slash">/</span> ∞</span></div>
+        <div class="scorebar" aria-live="polite">
+          <div class="score"><span>SCORE</span><strong data-score>0000</strong></div>
+          <div class="score"><span>BEST</span><strong data-best>0000</strong></div>
+          <div class="score score--time"><span>TIME LEFT</span><strong data-time>01:30</strong></div>
+        </div>
+        <div class="stage" data-stage>
+          <div class="stage-grid" aria-hidden="true"></div>
+          <span class="stage-corner stage-corner--tl"></span><span class="stage-corner stage-corner--tr"></span><span class="stage-corner stage-corner--bl"></span><span class="stage-corner stage-corner--br"></span>
+          <div class="stage-label stage-label--top"><span class="stage-label__dot"></span> LIVE VIEW <span class="stage-label__right">X / Y / Z AXIS</span></div>
+          <div class="cube-space cube-space--player" aria-label="Rotatable player cube">
+            <div class="cube-shadow"></div>
+            <div class="cube" data-player-cube>
+              <div class="face face--front"><span>F</span><small>FRONT</small></div>
+              <div class="face face--back"><span>B</span><small>BACK</small></div>
+              <div class="face face--right"><span>R</span><small>RIGHT</small></div>
+              <div class="face face--left"><span>L</span><small>LEFT</small></div>
+              <div class="face face--top"><span>T</span><small>TOP</small></div>
+              <div class="face face--bottom"><span>D</span><small>DOWN</small></div>
+            </div>
+          </div>
+          <div class="stage-axis stage-axis--x">X</div><div class="stage-axis stage-axis--y">Y</div><div class="stage-axis stage-axis--z">Z</div>
+          <div class="stage-bottom"><span>DRAG YOUR BRAIN, NOT YOUR MOUSE</span><span data-stage-status>AWAITING PLAYER</span></div>
+          <div class="stage-overlay" data-overlay>
+            <div class="overlay-card">
+              <span class="overlay-card__glyph">⬡</span>
+              <span class="overlay-card__eyebrow" data-overlay-eyebrow>READY WHEN YOU ARE</span>
+              <h2 data-overlay-title>Think outside<br><em>the square.</em></h2>
+              <p data-overlay-copy>Match the target cube as many times as you can in 90 seconds.</p>
+              <button class="start-button" type="button" data-start><span data-start-label>START GAME</span><span aria-hidden="true">↗</span></button>
+              <small>PRESS <kbd>ENTER</kbd> OR <kbd>SPACE</kbd></small>
+            </div>
+          </div>
+          <div class="match-flash" data-match-flash aria-hidden="true">MATCH! +<span data-points>100</span></div>
+        </div>
+        <div class="game-bottom">
+          <div class="target-panel">
+            <div class="target-panel__heading"><span class="target-panel__icon">◎</span><span><strong>MATCH THIS</strong><small>TARGET ORIENTATION</small></span></div>
+            <div class="cube-space cube-space--target" aria-label="Target cube orientation">
+              <div class="cube" data-target-cube>
+                <div class="face face--front"><span>F</span><small>FRONT</small></div>
+                <div class="face face--back"><span>B</span><small>BACK</small></div>
+                <div class="face face--right"><span>R</span><small>RIGHT</small></div>
+                <div class="face face--left"><span>L</span><small>LEFT</small></div>
+                <div class="face face--top"><span>T</span><small>TOP</small></div>
+                <div class="face face--bottom"><span>D</span><small>DOWN</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="controls-panel">
+            <div class="controls-panel__heading"><span>ROTATE YOUR CUBE</span><span>90° PER MOVE</span></div>
+            <div class="control-grid" aria-label="Cube rotation controls">
+              <button type="button" data-axis="x" data-step="-1" aria-label="Rotate X axis up"><span>↑</span><small>X UP</small></button>
+              <button type="button" data-axis="x" data-step="1" aria-label="Rotate X axis down"><span>↓</span><small>X DOWN</small></button>
+              <button type="button" data-axis="y" data-step="-1" aria-label="Rotate Y axis left"><span>←</span><small>Y LEFT</small></button>
+              <button type="button" data-axis="y" data-step="1" aria-label="Rotate Y axis right"><span>→</span><small>Y RIGHT</small></button>
+              <button type="button" data-axis="z" data-step="-1" aria-label="Rotate Z axis counterclockwise"><span>↺</span><small>Z LEFT</small></button>
+              <button type="button" data-axis="z" data-step="1" aria-label="Rotate Z axis clockwise"><span>↻</span><small>Z RIGHT</small></button>
+            </div>
+            <div class="utility-row"><span data-moves>0 MOVES</span><div><button type="button" data-pause disabled>PAUSE</button><button type="button" data-restart>RESTART ↗</button></div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><span>© CUBE SHIFT / BUILT FOR CURIOUS MINDS</span><span>ONE CUBE. INFINITE POSSIBILITIES.</span></footer>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
